@@ -1,0 +1,8 @@
+mylogs.lo: /usr/local/src/php-5.4.40/ext/mylogs/mylogs.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/usr/local/src/php-5.4.40/ext/mylogs $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /usr/local/src/php-5.4.40/ext/mylogs/mylogs.c -o mylogs.lo 
+$(phplibdir)/mylogs.la: ./mylogs.la
+	$(LIBTOOL) --mode=install cp ./mylogs.la $(phplibdir)
+
+./mylogs.la: $(shared_objects_mylogs) $(MYLOGS_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_mylogs) $(MYLOGS_SHARED_LIBADD)
+
