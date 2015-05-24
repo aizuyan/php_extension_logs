@@ -4,6 +4,16 @@
 ### 使用简单 ###
 ```php
 $logs = Mylogs::getInstance();
+
+/*
+logInit($level, $maxFileNum, $maxFileSize, $path, $fileName);
+$level => 记录的级别，分3个debug(0)，msg(1)，err(2)记录大于等于$level的
+$maxFileNum => 最大日志文件数
+$maxFileSie => 单个日志文件的最大字节数
+$path => 日志文件保存目录
+$fileName => 日志文件的名字
+*/
+
 $logs->logInit(1, 50, 20480000, "/tmp/", "testlog");
 
 $logs->err("ERR info!!!");    
